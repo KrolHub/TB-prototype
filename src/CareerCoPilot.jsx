@@ -85,30 +85,30 @@ const navItems = [
 function Sidebar({ activeView, onViewChange, onStartModule, mobileOpen, onClose }) {
   return (
     <>
-      {/* Mobile overlay backdrop */}
       {mobileOpen && (
         <div
-          className="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm md:hidden"
           onClick={onClose}
+          style={{
+            position: "fixed", inset: 0, zIndex: 30,
+            background: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)"
+          }}
         />
       )}
+      <aside style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        height: "100vh",
+        width: "256px",
+        zIndex: 40,
+        transform: mobileOpen ? "translateX(0)" : "translateX(-100%)",
+        transition: "transform 0.3s ease-in-out",
+        background: "#0d0f1a",
+        borderRight: "1px solid rgba(255,255,255,0.05)",
+        display: "flex",
+        flexDirection: "column",
+      }}
 
-      {/* Sidebar panel */}
-      <aside
-  className={cn(
-    "sidebar-panel w-64 flex flex-col bg-[#0d0f1a] border-r border-white/5",
-    mobileOpen ? "open" : ""
-  )}
-  style={{
-    position: window.innerWidth < 768 ? "fixed" : "sticky",
-    top: 0,
-    left: 0,
-    height: "100vh",
-    zIndex: 40,
-    transform: window.innerWidth < 768 ? (mobileOpen ? "translateX(0)" : "translateX(-100%)") : "none",
-    transition: "transform 0.3s ease-in-out",
-    flexShrink: 0,
-  }}
       >
         {/* Logo + mobile close */}
         <div className="px-5 py-5 border-b border-white/5 flex items-center justify-between">
