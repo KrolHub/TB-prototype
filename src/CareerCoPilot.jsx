@@ -98,8 +98,17 @@ function Sidebar({ activeView, onViewChange, onStartModule, mobileOpen, onClose 
   className={cn(
     "sidebar-panel w-64 flex flex-col bg-[#0d0f1a] border-r border-white/5",
     mobileOpen ? "open" : ""
-
-        )}
+  )}
+  style={{
+    position: window.innerWidth < 768 ? "fixed" : "sticky",
+    top: 0,
+    left: 0,
+    height: "100vh",
+    zIndex: 40,
+    transform: window.innerWidth < 768 ? (mobileOpen ? "translateX(0)" : "translateX(-100%)") : "none",
+    transition: "transform 0.3s ease-in-out",
+    flexShrink: 0,
+  }}
       >
         {/* Logo + mobile close */}
         <div className="px-5 py-5 border-b border-white/5 flex items-center justify-between">
