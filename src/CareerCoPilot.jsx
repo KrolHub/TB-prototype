@@ -95,13 +95,10 @@ function Sidebar({ activeView, onViewChange, onStartModule, mobileOpen, onClose 
 
       {/* Sidebar panel */}
       <aside
-        className={cn(
-          // Base: fixed drawer off-screen on mobile
-          "fixed inset-y-0 left-0 z-40 w-64 flex flex-col bg-[#0d0f1a] border-r border-white/5 transition-transform duration-300 ease-in-out",
-          // Mobile: slide in/out
-          mobileOpen ? "translate-x-0" : "-translate-x-full",
-          // Desktop: always visible as part of flow
-          "md:static md:translate-x-0 md:w-56 md:flex-shrink-0 md:h-screen md:sticky md:top-0"
+  className={cn(
+    "sidebar-panel w-64 flex flex-col bg-[#0d0f1a] border-r border-white/5",
+    mobileOpen ? "open" : ""
+
         )}
       >
         {/* Logo + mobile close */}
